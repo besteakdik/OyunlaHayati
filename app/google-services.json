@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "528502061941",
+    "project_id": "oyunlahayati",
+    "storage_bucket": "oyunlahayati.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528502061941:android:914ca4b0f721aa2704b13c",
+        "android_client_info": {
+          "package_name": "com.example.oyunlahayati"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "528502061941-4eoai07u1uqrafg7gg4pob47965bmtfg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oyunlahayati",
+            "certificate_hash": "2b135fc2c136e3e281739c3e8e4a32ddad31a319"
+          }
+        },
+        {
+          "client_id": "528502061941-c61h66ejtfuupfvmobkeh73u1rvsvks1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtQAsDwgaWMNArjkYBp7XwZ43w66J_TXM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "528502061941-c61h66ejtfuupfvmobkeh73u1rvsvks1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

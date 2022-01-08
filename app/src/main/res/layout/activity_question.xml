@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="418dp"
+        android:layout_height="304dp"
         android:background="#00BFA6"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,8 +32,8 @@
 
         <ImageView
             android:id="@+id/imagez"
-            android:layout_width="230dp"
-            android:layout_height="200dp"
+            android:layout_width="242dp"
+            android:layout_height="183dp"
             android:layout_marginLeft="85dp"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="0dp"
