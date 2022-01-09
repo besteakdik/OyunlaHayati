@@ -48,7 +48,7 @@
             android:text="Kaydolmak için aşağıdaki bilgileri doldurunuz." />
 
         <EditText
-            android:id="@+id/firstnamereg"
+            android:id="@+id/firstname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -58,7 +58,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/surnamereg"
+            android:id="@+id/surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -68,7 +68,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/phonereg"
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -78,7 +78,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/etEmailAdd"
+            android:id="@+id/emailLog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -88,7 +88,7 @@
             android:textSize="14dp" />
 
         <EditText
-            android:id="@+id/passforeg"
+            android:id="@+id/passw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -98,7 +98,7 @@
             android:textSize="14dp" />
 
         <Button
-            android:id="@+id/buttonreg"
+            android:id="@+id/btnSign"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button btnStart;
 
@@ -16,13 +16,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnStart = (Button) findViewById(R.id.btnStart);
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginPage.class);
-                startActivity(intent);
-            }
-        });
-
+        btnStart.setOnClickListener(this);
     }
+
+    private void onClicklets(View view) {
+        Intent intent = new Intent(MainActivity.this, LoginPage.class);
+        startActivity(intent);
+    }
+    @Override
+    public void onClick(View v) {
+        onClicklets(v);
+    }
+
 }

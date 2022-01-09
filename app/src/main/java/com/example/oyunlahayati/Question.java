@@ -1,5 +1,6 @@
 package com.example.oyunlahayati;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
@@ -11,11 +12,20 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
+
 
 public class Question extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +34,9 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     private List<QuestionClass> questionClassList;
     int quesNum;
     private int score;
+    private FirebaseFirestore firestore;
+    private ImageView img;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +45,7 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
 
         question = findViewById(R.id.question);
         qCount = findViewById(R.id.qnum);
+        img = findViewById(R.id.imagez);
 
         option1 = findViewById(R.id.option1);
         option2 = findViewById(R.id.option2);
@@ -43,6 +57,8 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
 
+        firestore = FirebaseFirestore.getInstance();
+
         getQuestionList();
 
         score = 0;
@@ -52,14 +68,22 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     private void getQuestionList() {
         questionClassList = new ArrayList<>();
 
-        questionClassList.add(new QuestionClass("Question1", "A", "B", "C", "D", 2));
-        questionClassList.add(new QuestionClass("Question2", "A", "B", "C", "D", 2));
-        questionClassList.add(new QuestionClass("Question3", "A", "B", "C", "D", 2));
-        questionClassList.add(new QuestionClass("Question4", "A", "B", "C", "D", 2));
-        questionClassList.add(new QuestionClass("Question5", "A", "B", "C", "D", 2));
+        firestore.collection("QUIZ").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    QuerySnapshot questions = task.getResult();
+                    for(QueryDocumentSnapshot doc: questions){
+                        questionClassList.add(new QuestionClass(doc.getString("question"),doc.getString("A"),
+                                doc.getString("B"),doc.getString("C"),doc.getString("D"),Integer.valueOf(doc.getString("Answer"))));
+                    }
+                    setQuestion();
 
-        setQuestion();
-
+                }else{
+                    Toast.makeText(Question.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void setQuestion() {
@@ -74,6 +98,9 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
 
         quesNum = 0;
 
+        if(quesNum==0){
+            img.setImageResource(R.drawable.dog);
+        }
     }
 
     @Override
@@ -99,6 +126,7 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         }
         checkAnswer(selectedOption, view);
     }
+
 
     private void checkAnswer(int selectedOption, View view) {
         if (selectedOption == questionClassList.get(quesNum).getCorrectAnswer()) {
@@ -135,9 +163,20 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void changeQuestion() {
-        if (quesNum < questionClassList.size() - 1) {
 
-            quesNum++;
+            if(quesNum < questionClassList.size()-1) {
+                quesNum++;
+                switch (quesNum) {
+                    case 1:
+                        img.setImageResource(R.drawable.grape);
+                        break;
+                    case 2:
+                        img.setImageResource(R.drawable.cat);
+                        break;
+                    default:
+                        break;
+
+                }
 
             playAnim(question, 0, 0);
             playAnim(option1, 0, 1);
